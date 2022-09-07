@@ -243,7 +243,7 @@ def send_comment(message):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
     bot.clear_step_handler(call)
-    bot.answer_callback_query(callback_query_id=call.id , text='')
+    bot.answer_callback_query(callback_query_id=call.from_user.id , text='')
     button_name = call.data.split('<')[0]
 
     first_book = call.data.split('<')[1]

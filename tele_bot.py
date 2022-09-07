@@ -392,7 +392,7 @@ def callback_worker(call):
             except:
                 markup.row(change_first)
                 markup.row(go_back)
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Что изменим? \n\n')
+        bot.edit_message_text(chat_id=call.from_user.id, message_id=call.message.message_id, text='Что изменим? \n\n')
         bot.edit_message_reply_markup(call.from_user.id, call.message.message_id, reply_markup=markup)
         # bot.send_message(call.from_user.id, text= 'Что изменим? \n\n', reply_markup=markup)
 
@@ -403,7 +403,7 @@ def callback_worker(call):
         delete_first = types.InlineKeyboardButton(text = 'Удалить', callback_data='1_y' + '<' + second_book + '|' + third_book + '>' + '' + '*#')
         go_back = types.InlineKeyboardButton(text = 'Назад >>', callback_data='c_b' + '<' + first_book + '|' + second_book + '>' + third_book + '*#')
         markup.add(edit_first, delete_first, go_back)
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=str(df.iloc[int(first_book)]['title']))
+        bot.edit_message_text(chat_id=call.from_user.id, message_id=call.message.message_id, text=str(df.iloc[int(first_book)]['title']))
         bot.edit_message_reply_markup(call.from_user.id, call.message.message_id, reply_markup=markup)
 
     if button_name == 'e_b_2':
@@ -412,7 +412,7 @@ def callback_worker(call):
         delete_first = types.InlineKeyboardButton(text = 'Удалить', callback_data='2_y' + '<' + first_book + '|' + third_book + '>' + '' + '*#')
         go_back = types.InlineKeyboardButton(text = 'Назад >>', callback_data='c_b' + '<' + first_book + '|' + second_book + '>' + third_book + '*#')
         markup.add(edit_first, delete_first, go_back)
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=str(df.iloc[int(second_book)]['title']))
+        bot.edit_message_text(chat_id=call.from_user.id, message_id=call.message.message_id, text=str(df.iloc[int(second_book)]['title']))
         bot.edit_message_reply_markup(call.from_user.id, call.message.message_id, reply_markup=markup)
     
     if button_name == 'e_b_3':
@@ -421,6 +421,6 @@ def callback_worker(call):
         delete_first = types.InlineKeyboardButton(text = 'Удалить', callback_data='3_y' + '<' + first_book + '|' + second_book + '>' + '' + '*#')
         go_back = types.InlineKeyboardButton(text = 'Назад >>', callback_data='c_b' + '<' + first_book + '|' + second_book + '>' + third_book + '*#')
         markup.add(edit_first, delete_first, go_back)
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=str(df.iloc[int(third_book)]['title']))
+        bot.edit_message_text(chat_id=call.from_user.id, message_id=call.message.message_id, text=str(df.iloc[int(third_book)]['title']))
         bot.edit_message_reply_markup(call.from_user.id, call.message.message_id, reply_markup=markup)
 bot.polling(none_stop=True, interval=0)
